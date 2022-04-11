@@ -23,4 +23,4 @@ const instructorSchema = new mongoose.Schema({
 	timestamps: true
   });
 
-module.exports = mongoose.model('Instructor', InstructorSchema);
+module.exports = mongoose.model('Instructor', instructorSchema);
