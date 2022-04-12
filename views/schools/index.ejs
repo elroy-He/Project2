@@ -62,14 +62,21 @@
         </tr>
       </thead>
       <tbody>
-        <% schools.forEach(school => { %>
-        <tr>
-          <td><a href="/schools/<%= school._id %>"> <%= school.schoolName %> </a></td>
-          <td><%= school.ratings %></td>
-          <td><%= school.reviews %></td>
-          <td><a src='#'>view</a></td>
-        </tr>
-        <% }); %>
+        <% if(schools) { %>
+          <% for (let i=schools.length-1; i>=0; i--) { %>
+            <tr>
+              <td><a href="/schools/<%= schools[i]._id %>"> <%= schools[i].schoolName %> </a></td>
+              <td><%= schools[i].ratings[0] %></td>
+              <td><%= schools[i].reviews[0] %></td>
+              <td><a src='#'>view</a></td>
+              <td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
+                class="delete-review" method="POST">
+                <button type="submit" class="btn-close" aria-label="Close"></button>
+              </form></td>
+            </tr>
+            <% } %>
+       <% } %>
+
       </tbody>
     </table>
 
