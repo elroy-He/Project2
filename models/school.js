@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schoolSchema = new mongoose.Schema({
-  usersGone: {type: Schema.Types.ObjectId, ref: 'User'},
+  usersGone: [{type: Schema.Types.ObjectId, ref: 'User'}],
   reviews: [{type: String, required: true}],
   ratings: [{type: Number, required: true}],
   schoolName: {type: String, required: true} },

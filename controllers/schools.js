@@ -1,4 +1,5 @@
 const School = require('../models/school');
+const User = require('../models/user');
 
 module.exports = {
   new: newSchool,
@@ -21,25 +22,29 @@ function deleteSchool(req, res) {
 
   })
 }
+
 function newReview(req, res) {
 
   School.findById(req.params.id, function (err, school) {
     school.reviews.push(req.body.reviews);
     school.ratings.push(parseInt(req.body.ratings));
-    req.body.usersGone = req.user;
+    school.usersGone.push(req.user);
     school.save();
-    res.redirect(`/schools/${school._id}`)
+    res.redirect(`/schools/${req.params.id}`)
+
   });
 }
 
 
 function deleteReview(req, res) {
+
   School.findById(req.params.id, function(err, schoolDocument){
 		// find the subdocument itself, find the review in the movieDocument, that has the same id as our req.params.id
 
 		// If the review wasn't made by the user redirect them back to the same page
     console.log(schoolDocument, '<--- schoolDocument')
-		if(!schoolDocument.usersGone.equals(req.user._id)) return res.redirect(`/schools/${schoolDocument._id}`);
+    console.log(req.params.i, schoolDocument.usersGone[req.params.i], req.user._id);
+		if(!schoolDocument.usersGone[parseInt(req.params.i)].equals(req.user._id)) return res.redirect(`/schools/${schoolDocument._id}`);
 
 		// remove the review
 		// 1 way find the review then call remove method
@@ -52,13 +57,21 @@ function deleteReview(req, res) {
 			res.redirect(`/schools/${schoolDocument._id}`)
 		})
 	})
-}
+  }
+
+
+
+
 
 function show(req, res) {
   School.findById(req.params.id, function(err, school) {
+    User.find({}, function(err, users) {
       res.render('schools/show', {
-        school
+        school,
+        users
     })
+    })
+
   })
 }
 
@@ -80,7 +93,7 @@ function create(req, res) {
     if(schools.some(school => school.schoolName === req.body.schoolName)) {
       res.redirect('/schools/index');
     } else {
-      schoolToBeAdded.usersGone = req.user;
+      schoolToBeAdded.usersGone.push(req.user);
       schoolToBeAdded.save();
       res.redirect('/schools/index')
     }
