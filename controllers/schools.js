@@ -1,5 +1,6 @@
 const School = require('../models/school');
 const User = require('../models/user');
+const Instructor = require('../models/instructor');
 
 module.exports = {
   new: newSchool,
@@ -79,9 +80,13 @@ function show(req, res) {
 function index(req,res) {
   console.log(req.user);
   School.find({}, function(err, schools){
-    res.render('schools/index', {
-      schools
+    Instructor.find({}, function (err, instructors){
+      res.render('schools/index', {
+        schools,
+        instructors
+      })
     })
+
   })
 }
 function newSchool(req, res) {

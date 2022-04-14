@@ -1,138 +1,82 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <form action="/schools/new" metho="GET">
+        <button type="submit" class="btn btn-primary"> Add School </button>
+      </form>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">LINK</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Show All Schools</a></li>
-                <li><a class="dropdown-item" href="#">Show All Professors</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <div class="container-bg" >
-      <div class="container-md d-flex align-items-center justify-content-center" style="height: 350px">
-        <div class="row justify-content-md-center">
-          <div class="col-sm"> <a href="/schools/new">Add Schools</a></div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">School Name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Review</th>
+            <th scope="col">Details</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(schools) { %>
+            <% for (let i=schools.length-1; i>=0; i--) { %>
+              <tr>
+                <td><a href="/schools/<%= schools[i]._id %>"> <%= schools[i].schoolName %> </a></td>
+                <td><%= schools[i].ratings[0] %></td>
+                <td><%= schools[i].reviews[0] %></td>
+                <td><a src='#'>view</a></td>
+                <td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
+                  class="delete-review" method="POST">
+                  <button type="submit" class="btn-close" aria-label="Close"></button>
+                </form></td>
+              </tr>
+              <% } %>
+         <% } %>
 
-          <div class="col-sm">
-            <div>
-              shfaoihvoasnvlaksvseihviosdvisdvnasdvaoisdoaisvaiosfbsdgsdfsdgvs xdhdhshsrurdhshsjsdjrdjdfjd
-            </div>
-          </div>
+        </tbody>
+      </table>
+      <div class="carousel-caption d-none d-md-block" id="caption1">
+
+        <div class="slider-btn">
+          <button class="btn btn-1">
+            <% if (user) { %>
+              <a href="/logout" class="logout">LOG OUT</a>
+            <% } else {%>
+              <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="img-fluid login-pic"></a>
+              <% } %></button>
+          </button>
+          <button class="btn btn-2 school-btn"><a class="school-btn" href="/schools/index">All school</a></button>
         </div>
       </div>
     </div>
-    <p>Welcome to RateMyBootcamps</p>
+    <div class="carousel-item">
+      <img src="https://media-exp1.licdn.com/dms/image/C4E1BAQF8ypra6qNVGw/company-background_10000/0/1548254197022?e=2147483647&v=beta&t=ugrEjoT-cRqDcyhIvJhv87081NHKaPBuh9XdDj0pVXI" class="d-block w-100" alt="Harvard">
+      <div class="carousel-caption d-none d-md-block" id="caption2">
+        <h5>Our Mission</h5>
+        <p>...</p>
 
-    <a href="/schools/new">Add Schools</a>
-
-
-
-
-    <div id="collegeDisplay" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="pic1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="pic2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="pic3"></button>
-      </div>
-      <div class="carousel-inner ">
-        <div class="carousel-item active">
-          <img src="https://image.cnbcfm.com/api/v1/image/106604493-1594057373282harvarduniversitysdunsterhouseincambridgema.jpg?v=1594057738" class="d-block w-100" alt="College Picture 1 - Harvard">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Harvard University</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-
-            <div class="slider-button">
-              <button class="btn btn-1">Log In</button>
-              <button class="btn btn-2">All Colleges</button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2020%2F03%2Funiversity-of-washington.jpg&q=60" class="d-block w-100" alt="College Picture 2- UW">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>University Of Washington</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-
-            <div class="slider-button">
-              <button class="btn btn-1">Log In</button>
-              <button class="btn btn-2">All Colleges</button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://ucsdguardian.org/wp-content/uploads/2019/10/geisel.jpg" class="d-block w-100" alt="College Picture 3 - UCSD">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>UCSD</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-
-            <div class="slider-button">
-              <button class="btn btn-1">Log In</button>
-              <button class="btn btn-2">All Colleges</button>
-            </div>
-          </div>
+        <div class="slider-btn">
+          <button class="btn btn-1">
+            <% if (user) { %>
+              <a href="/logout" class="logout">LOG OUT</a>
+            <% } else {%>
+              <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" class="img-fluid login-pic"></a>
+              <% } %></button>
+          </button>
+          <button class="btn btn-2"><a class="school-btn" href="/schools/index">All school</a></button>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
 
-
-
-
-
-  </body>
-</html>
-
-
-
-
-
-<a href="/schools/<%= schools[i]._id %>"> <%= schools[i].schoolName %> </a>
-
-<td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
-  class="delete-review" method="POST">
-  <button type="submit" class="btn-close" aria-label="Close"></button>
-</form></td>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

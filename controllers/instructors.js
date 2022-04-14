@@ -22,6 +22,8 @@ function createReview(req, res) {
       console.log(req.user)
       review.userAvatar = req.user.avatar;
       review.userName = req.user.name;
+      review.accessibility = req.body.accessibility;
+      review.prepareness = req.body.prepareness;
       review.save();
       console.log(review, ' $^&^%&^^& pinche review');
       res.redirect(`/instructors/${instructor._id}`)
@@ -58,6 +60,8 @@ function create(req, res) {
     review.users = req.user;
     review.userName = req.user.name;
     review.userAvatar = req.user.avatar;
+    review.accessibility = req.body.accessibility;
+    review.prepareness = req.body.prepareness;
     instructor.save();
     review.instructors = instructor;
 
@@ -72,7 +76,6 @@ function index(req, res) {
   School.findById(req.params.id, function(err, school) {
     Instructor.find({schoolsTaught: school._id}, function(err, instructors) {
       console.log(school);
-      let reviews = [];
       console.log(instructors, '<--- instructors');
       // instructors.forEach(instructor => {
       //   console.log(instructor, '<--- instructor')
@@ -95,9 +98,6 @@ function index(req, res) {
         reviews
       });
       })
-
-
-
     })
   })
 

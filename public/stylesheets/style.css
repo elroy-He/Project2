@@ -49,7 +49,18 @@
   background: #000;
   opacity: 0.3;
 }
-
+#form {
+  position: absolute;
+  top:10%;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+#form-ins {
+  position: absolute;
+  top:10%;
+  padding-left: 100px;
+  padding-right: 100px;
+}
 #caption1 {
   position: absolute;
   top:30%;
@@ -138,11 +149,11 @@
 
 td {
   vertical-align: middle;
+  font-size: 15px;
+  font-family: 'Belleza', sans-serif;
 }
 table {
-  background-size: 3096px auto;
-  background-repeat: no-repeat;
-  background-image: url("https://64.media.tumblr.com/162cc3dfa5cef6c882aba5453445f0fb/tumblr_mx3y1yYFad1qcm0eto1_1280.png");
+  background-color: rgba(255, 255, 255, 0.5);
   max-width: 90%;
   margin-left:auto;
   margin-right:auto;
@@ -154,4 +165,23 @@ table {
   background-color: #f8ceec;
   background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
 
+}
+
+#show-img {
+  max-width: 20%;
+  height: 100%;
+  position: absolute;
+  margin-left: 0;
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-repeat: no-repeat;
+  /* background-image: url("https://i.graphicmama.com/blog/wp-content/uploads/2019/08/19151054/monyssb-creative-web-design-with-cartoon-illustrations-pattern1.jpg"); */
+  background-size: cover;
+  height: 100%;
 }
