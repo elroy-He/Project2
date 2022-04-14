@@ -21,6 +21,7 @@ require('./config/passport');
 
 const indexRouter = require('./routes/index');
 const schoolRouter = require('./routes/schools');
+const instructorRouter = require('./routes/instructors');
 
 // create the Express app
 const app = express();
@@ -55,6 +56,7 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
 app.use('/schools', schoolRouter);
+app.use('/', instructorRouter);
 
 
 // invalid request, send 404 page

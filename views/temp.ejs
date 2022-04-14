@@ -125,3 +125,14 @@
 
   </body>
 </html>
+
+
+
+
+
+<a href="/schools/<%= schools[i]._id %>"> <%= schools[i].schoolName %> </a>
+
+<td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
+  class="delete-review" method="POST">
+  <button type="submit" class="btn-close" aria-label="Close"></button>
+</form></td>

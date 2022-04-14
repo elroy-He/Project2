@@ -66,6 +66,7 @@ function deleteReview(req, res) {
 function show(req, res) {
   School.findById(req.params.id, function(err, school) {
     User.find({}, function(err, users) {
+      console.log(users)
       res.render('schools/show', {
         school,
         users
@@ -76,6 +77,7 @@ function show(req, res) {
 }
 
 function index(req,res) {
+  console.log(req.user);
   School.find({}, function(err, schools){
     res.render('schools/index', {
       schools
