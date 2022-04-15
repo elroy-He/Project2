@@ -54,7 +54,7 @@ function show(req, res) {
     Review.find({instructors: instructor._id}, function(err, reviews) {
       console.log(instructor, '<--- instructor lalala')
       console.log(reviews, '<----- reviews abscanscvascas')
-      res.render('Instructors/show', {
+      res.render('instructors/show', {
         instructor,
         reviews
       });
