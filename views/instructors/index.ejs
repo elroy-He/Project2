@@ -3,12 +3,64 @@
 <body id="insbod">
   <div class="container showpage-container" >
     <div class="row justify-content-center">
+
+      <div class="col">
+        <p class="ins-intro"> Write Your</p>
+        <p class="ins-name"> Reviews</p>
+      </div>
+
+      <div class="col">
+        <form class="show-form" action="/schools/<%= school._id %>/instructors" method="POST">
+          <div>
+            <input type="text" class="form-control" name="name" placeholder="Instructor name">
+          </div>
+        <div class="mb-3">
+          <label id="form-introo" for="exampleFormControlTextarea1">Review</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="reviews"  rows="3"></textarea>
+        </div>
+        <div>
+          <select class="form-select mb-3" aria-label="Default select example" name="ratings">
+            <option selected>Overall Ratings For This Instructor</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+
+        <div>
+          <select class="form-select mb-3" aria-label="Default select example" name="accessibility">
+            <option selected>How Accessible Is This Instrcutor</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+
+        <div>
+          <select class="form-select mb-3" aria-label="Default select example" name="prepareness">
+            <option selected>How Prepared Is This Instructor</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-secondary"> Add Instructor </button>
+        </form>
+      </div>
+
+      </div>
+      </div>
+
       <table class="table table-striped table-hover" id="instable">
         <thead>
           <tr>
-            <th scope="col">Professor Name</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Review</th>
+            <th scope="col">Instructor Name</th>
 
           </tr>
         </thead>
@@ -17,17 +69,13 @@
             <% for (let i=instructors.length-1; i>=0; i--) { %>
               <tr>
                 <td><a href="/instructors/<%= instructors[i]._id %>"><%= instructors[i].name %></a></td>
-                <td><p>Overall Ratings:         <%= reviews[i].ratings %></p>
 
-            </td>
-                <td><%= reviews[i].reviews %></td>
               </tr>
               <% } %>
          <% } %>
 
         </tbody>
       </table>
-    </div>
   </div>
 </body>
 

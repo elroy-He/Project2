@@ -13,12 +13,12 @@
         <form class="show-form" action="/instructors/<%= instructor._id %>" method="POST">
 
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1">Review</label>
+            <label id="form-intro" for="exampleFormControlTextarea1">Write Your Review For: <%= instructor.name %></label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="reviews"  rows="3"></textarea>
           </div>
           <div>
             <select class="form-select mb-3" aria-label="Default select example" name="ratings">
-              <option selected>Overall Ratings For This Instructor</option>
+              <option selected class="selected">Overall Ratings For This Instructor</option>
               <option value=1>1</option>
               <option value=2>2</option>
               <option value=3>3</option>
@@ -29,7 +29,7 @@
 
           <div>
             <select class="form-select mb-3" aria-label="Default select example" name="accessibility">
-              <option selected>How Accessible Is This Instrcutor</option>
+              <option selected class="selected">How Accessible Is This Instrcutor</option>
               <option value=1>1</option>
               <option value=2>2</option>
               <option value=3>3</option>
@@ -40,7 +40,7 @@
 
           <div>
             <select class="form-select mb-3" aria-label="Default select example" name="prepareness">
-              <option selected>How Prepared Is This Instructor</option>
+              <option selected class="selected">How Prepared Is This Instructor</option>
               <option value=1>1</option>
               <option value=2>2</option>
               <option value=3>3</option>
@@ -49,7 +49,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary"> Add Review </button>
+          <button type="submit" class="btn btn-secondary"> Add Review </button>
           </form>
       </div>
     </div>
@@ -74,7 +74,10 @@
                 <p class="smaller-ratings">Prepareness Rating:      <%= reviews[i].prepareness %> </p>
           </td>
             <td><p><%= reviews[i].reviews %></p></td>
-            <td><a src='#'>view</a></td>
+            <td><form action="/instructors/<%= instructor._id %>/<%= reviews[i]._id %>?_method=DELETE"
+              class="delete-review" method="POST">
+              <button type="submit" class="btn-close" aria-label="Close"></button>
+            </form> </td>
           </tr>
           <% } %>
      <% } %>

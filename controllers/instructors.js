@@ -7,7 +7,22 @@ module.exports = {
   index,
   create,
   show,
-  createReview
+  createReview,
+  delete: deleteReview
+}
+
+function deleteReview(req, res) {
+  Review.findOneAndRemove({_id: req.params.revId}, function(err, review) {
+    console.log(review, '<------ rview dfdfbg')
+    if (review.users.equals(req.user)) {
+      review.save(function(err) {
+        res.redirect(`/instructors/${req.params.profId}`)
+      });
+    }
+    else {
+      return res.redirect(`/instructors/${req.params.profId}`)
+    }
+  })
 }
 
 function createReview(req, res) {
@@ -55,6 +70,7 @@ function create(req, res) {
 
     instructor.schoolsTaught = school;
     instructor.usersGone = req.user;
+
     review.ratings = req.body.ratings;
     review.reviews = req.body.reviews;
     review.users = req.user;

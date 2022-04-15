@@ -24,7 +24,7 @@
               <th scope="col">Rating</th>
               <th scope="col">Review</th>
               <th scope="col">Details</th>
-              <th scope="col">Delete</th>
+
             </tr>
           </thead>
           <tbody>
@@ -35,10 +35,6 @@
                   <td><%= schools[i].ratings[0] %></td>
                   <td><%= schools[i].reviews[0] %></td>
                   <td><a src='#'>view</a></td>
-                  <td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
-                    class="delete-review" method="POST">
-                    <button type="submit" class="btn-close" aria-label="Close"></button>
-                  </form></td>
                 </tr>
                 <% } %>
            <% } %>

@@ -18,7 +18,7 @@ function deleteSchool(req, res) {
   //console.log(req.params.id, '<---')
   School.findByIdAndRemove(req.params.id, function(err, school) {
     school.save(function(err) {
-      res.redirect('/schools/index')
+      return res.redirect('/schools/index')
     });
 
   })
@@ -28,7 +28,7 @@ function newReview(req, res) {
 
   School.findById(req.params.id, function (err, school) {
     school.reviews.push(req.body.reviews);
-    school.ratings.push(parseInt(req.body.ratings));
+    school.ratings.push(req.body.ratings);
     school.usersGone.push(req.user);
     school.save();
     res.redirect(`/schools/${req.params.id}`)

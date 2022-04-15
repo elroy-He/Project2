@@ -213,7 +213,7 @@ body {
 .ins-name {
 
   font-family: 'Press Start 2P', cursive;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .ins-intro {
@@ -228,4 +228,31 @@ body {
 
 #instable {
   opacity: 0.85;
+}
+
+#form-intro {
+  font-family:'Belleza', sans-serif;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.selected {
+  font-family: 'Belleza', sans-serif;
+}
+
+.btn-secondary {
+  margin-left: 520px;
+  margin-bottom: 40px;
+}
+
+#form-introo {
+  font-family:'Belleza', sans-serif;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+#schoolShow-intro {
+  font-family:'Belleza', sans-serif;
+  font-size: 25px;
+  margin-bottom: 10px;
 }
