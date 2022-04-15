@@ -52,7 +52,7 @@ function create(req, res) {
     const instructor = new Instructor();
     const review = new Review();
     instructor.name = req.body.name;
-    instructor.reviews = review;
+
     instructor.schoolsTaught = school;
     instructor.usersGone = req.user;
     review.ratings = req.body.ratings;
@@ -62,6 +62,7 @@ function create(req, res) {
     review.userAvatar = req.user.avatar;
     review.accessibility = req.body.accessibility;
     review.prepareness = req.body.prepareness;
+    instructor.reviews = review;
     instructor.save();
     review.instructors = instructor;
 
@@ -77,6 +78,8 @@ function index(req, res) {
     Instructor.find({schoolsTaught: school._id}, function(err, instructors) {
       console.log(school);
       console.log(instructors, '<--- instructors');
+
+      // const reviews = [];
       // instructors.forEach(instructor => {
       //   console.log(instructor, '<--- instructor')
       //   Review.find({instructors: instructor._id}, function(err, review) {
@@ -90,6 +93,12 @@ function index(req, res) {
       //     reviews.push(review);
       //   })
       // }
+      // res.render('instructors/index', {
+      //   school,
+      //   instructors,
+      //   reviews
+      // });
+
       Review.find({}, function(err, reviews) {
         console.log(reviews);
       res.render('instructors/index', {

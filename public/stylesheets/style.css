@@ -46,7 +46,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background: #000;
+  background: grey;
   opacity: 0.3;
 }
 #form {
@@ -149,23 +149,18 @@
 
 td {
   vertical-align: middle;
-  font-size: 15px;
+  font-size: 25px;
   font-family: 'Belleza', sans-serif;
 }
+
 table {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.45);
   max-width: 90%;
   margin-left:auto;
   margin-right:auto;
-  border-radius: 0.75;
+  border-radius: 50px;
 }
 
-.insShow {
-  /* background-color: linear-gradient(red 0%, orange 25%, yellow 50%, green 75%, blue 100%); */
-  background-color: #f8ceec;
-  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
-
-}
 
 #show-img {
   max-width: 20%;
@@ -184,4 +179,53 @@ body {
   /* background-image: url("https://i.graphicmama.com/blog/wp-content/uploads/2019/08/19151054/monyssb-creative-web-design-with-cartoon-illustrations-pattern1.jpg"); */
   background-size: cover;
   height: 100%;
+}
+
+.gif {
+  width: 75px;
+  border-radius: 100px;
+}
+
+#index-btn {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-around;
+}
+
+.index-title {
+  font-size: 35px;
+  color: black;
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom: 25px;
+}
+
+.gif-td {
+  margin-left: 50px;
+}
+
+.smaller-ratings {
+  vertical-align: middle;
+  font-size: 20px;
+  color:grey;
+  font-family: 'Belleza', sans-serif;
+}
+
+.ins-name {
+
+  font-family: 'Press Start 2P', cursive;
+  font-size: 60px;
+}
+
+.ins-intro {
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 130px;
+  font-size: 25px;
+}
+
+.show-form {
+  margin-top: 50px;
+}
+
+#instable {
+  opacity: 0.85;
 }

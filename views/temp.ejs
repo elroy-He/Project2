@@ -80,3 +80,94 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+
+
+
+
+<%- include('../partials/header') %>
+
+
+    <form action="/schools/new" metho="GET">
+      <button type="submit" class="btn btn-primary"> Add School </button>
+    </form>
+
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">School Name</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Review</th>
+          <th scope="col">Details</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(schools) { %>
+          <% for (let i=schools.length-1; i>=0; i--) { %>
+            <tr>
+              <td><a href="/schools/<%= schools[i]._id %>"> <%= schools[i].schoolName %> </a></td>
+              <td><%= schools[i].ratings[0] %></td>
+              <td><%= schools[i].reviews[0] %></td>
+              <td><a src='#'>view</a></td>
+              <td><form action="/schools/index/<%= schools[i]._id %>?_method=DELETE"
+                class="delete-review" method="POST">
+                <button type="submit" class="btn-close" aria-label="Close"></button>
+              </form></td>
+            </tr>
+            <% } %>
+       <% } %>
+
+      </tbody>
+    </table>
+
+
+
+    <form action="/schools/<%= school._id %>/instructors" method="POST">
+      <div>
+        <input type="text" class="form-control" name="name" placeholder="Instructor name">
+      </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1">Review</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" name="reviews"  rows="3"></textarea>
+    </div>
+    <div>
+      <select class="form-select mb-3" aria-label="Default select example" name="ratings">
+        <option selected>Rate this school</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+    </div>
+
+    <div>
+      <select class="form-select mb-3" aria-label="Default select example" name="accessibility">
+        <option selected>How Accessible Is This Instrcutor</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+    </div>
+
+    <div>
+      <select class="form-select mb-3" aria-label="Default select example" name="prepareness">
+        <option selected>How Prepared Is This Instructor</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary"> Add Professor </button>
+    </form>
+
+
+
+
+    <%- include('../partials/footer') %>

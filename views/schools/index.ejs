@@ -9,9 +9,11 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="https://cdn.wallpapersafari.com/98/92/j41fo7.jpg" class="d-block w-100" alt="Harvard">
+
       <div class="carousel-caption d-none d-md-block" id="form">
-        <form action="/schools/new" metho="GET">
-          <button type="submit" class="btn btn-primary"> Add School </button>
+        <div class="index-title">ALL BOOTCAMPS</div>
+        <form  id="index-btn" action="/schools/new" metho="GET">
+          <button type="submit" class="btn btn-primary" > Add School </button>
         </form>
 
 
@@ -46,12 +48,15 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://www.capturelandscapes.com/wp-content/uploads/2018/01/RJPollard.jpg" class="d-block w-100" alt="Harvard">
+      <img src="https://www.wallpaperbetter.com/wallpaper/78/296/975/mountains-nature-sky-river-beautiful-scenery-1080P-wallpaper.jpg" class="d-block w-100" alt="Harvard">
+
       <div class="carousel-caption d-none d-md-block" id="form-ins">
+
         <table class="table table-striped table-hover">
+          <div class="index-title">ALL INSTRUCTORS</div>
           <thead>
             <tr>
-              <th scope="col">Professor Name</th>
+              <th scope="col">Instructor Name</th>
               <th scope="col">Details</th>
             </tr>
           </thead>
@@ -59,7 +64,7 @@
             <% if(instructors) { %>
               <% for (let i=instructors.length-1; i>=0; i--) { %>
                 <tr>
-                  <td><%= instructors[i].name %></a></td>
+                  <td ><img class="gif gif-td" src="https://cdn.dribbble.com/users/4666603/screenshots/11339749/media/74a7db86baec23a0b88b9c34fb90546f.gif"> <%= instructors[i].name %></td>
                   <td><button class="btn" ><a href="/instructors/<%= instructors[i]._id %>">View This Instructor</a></button> </td>
 
                 </tr>

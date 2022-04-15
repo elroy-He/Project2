@@ -2,48 +2,56 @@
 
 <body class="insShow">
   <div class="container showpage-container">
-    <div class="row justify-content-center">
-    <form action="/instructors/<%= instructor._id %>" method="POST">
+    <div class="row">
 
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1">Review</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" name="reviews"  rows="3"></textarea>
-    </div>
-    <div>
-      <select class="form-select mb-3" aria-label="Default select example" name="ratings">
-        <option selected>Rate this school</option>
-        <option value=1>1</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
-      </select>
-    </div>
+      <div class="col">
+        <p class="ins-intro"> Reviews For: </p>
+        <p class="ins-name"><%= instructor.name %></p>
+      </div>
 
-    <div>
-      <select class="form-select mb-3" aria-label="Default select example" name="accessibility">
-        <option selected>How Accessible Is This Instrcutor</option>
-        <option value=1>1</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
-      </select>
-    </div>
+      <div class="col">
+        <form class="show-form" action="/instructors/<%= instructor._id %>" method="POST">
 
-    <div>
-      <select class="form-select mb-3" aria-label="Default select example" name="prepareness">
-        <option selected>How Prepared Is This Instructor</option>
-        <option value=1>1</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
-      </select>
-    </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1">Review</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="reviews"  rows="3"></textarea>
+          </div>
+          <div>
+            <select class="form-select mb-3" aria-label="Default select example" name="ratings">
+              <option selected>Overall Ratings For This Instructor</option>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+            </select>
+          </div>
 
-    <button type="submit" class="btn btn-primary"> Add Review </button>
-    </form>
+          <div>
+            <select class="form-select mb-3" aria-label="Default select example" name="accessibility">
+              <option selected>How Accessible Is This Instrcutor</option>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+            </select>
+          </div>
+
+          <div>
+            <select class="form-select mb-3" aria-label="Default select example" name="prepareness">
+              <option selected>How Prepared Is This Instructor</option>
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary"> Add Review </button>
+          </form>
+      </div>
     </div>
   </div>
 
@@ -53,7 +61,6 @@
         <th scope="col">User Name</th>
         <th scope="col">Rating</th>
         <th scope="col">Review</th>
-        <th scope="col">Details</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
@@ -62,8 +69,11 @@
         <% for (let i=reviews.length-1; i>=0; i--) { %>
           <tr>
             <td><img class="userAvatar" alt="avatar" src="<%= reviews[i].userAvatar %>"><%= reviews[i].userName %></td>
-            <td><%= reviews[i].ratings %></td>
-            <td><%= reviews[i].reviews %></td>
+            <td><p>Overall Ratings:         <%= reviews[i].ratings %></p>
+                <p class="smaller-ratings">Accessibility Rating:    <%= reviews[i].accessibility %></p>
+                <p class="smaller-ratings">Prepareness Rating:      <%= reviews[i].prepareness %> </p>
+          </td>
+            <td><p><%= reviews[i].reviews %></p></td>
             <td><a src='#'>view</a></td>
           </tr>
           <% } %>
